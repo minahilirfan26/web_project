@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Bloom</title>
+
+
+    <!-- remix icons link  -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- internal css  -->
+    <!-- style opening tag  -->
+    <style>
+        /* google fonts link  (poppins,outfit,playfair display)  */
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        /* removing default margin and padding  */
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: #F1F0EE;
+        }
+
+        /* custom scrollbar  */
+        ::-webkit-scrollbar {
+            width: 0.625rem;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #30261C;
+
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #18130e;
+
+        }
+
+        /* utility classes  */
+
+        /* display  */
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .wrap {
+            flex-wrap: wrap;
+        }
+
+        /* gap  */
+        .gap-1 {
+            gap: 1rem;
+        }
+
+        .gap-2 {
+            gap: 2rem;
+        }
+
+
+        /* utility classes for fonts  */
+        .playfair-display {
+            font-family: "Playfair Display", serif;
+        }
+
+        .outfit {
+            font-family: "Outfit", sans-serif;
+        }
+
+        .poppins {
+            font-family: "Poppins", sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* styles for hero section /header  */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 100%;
+            height: 650px;
+            background-image: url('/images/banner2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* styling for navbar  */
+        .hero-section>nav {
+            min-width: 80%;
+            width: 90%;
+            justify-content: space-between;
+        }
+
+
+        nav {
+            padding: 1.2rem 2.5rem;
+        }
+
+        /* styles for navbar logo  */
+        nav .logo {
+            font-size: 32px;
+        }
+
+        nav>span>h1 {
+            font-weight: 500;
+        }
+
+        nav>span>img {
+            min-width: 70px;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1rem;
+        }
+
+        /* styles for nav menu  */
+        nav>ul>li {
+            padding: 0.5rem;
+        }
+
+        nav>ul>li>a {
+            box-shadow: inset 0 0 0 0 #2A0000;
+            color: #2A0000;
+            margin: 0 -.25rem;
+            transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+            font-size: 17px;
+            color: #FFFFFF;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease-in-out;
+            z-index: 10;
+        }
+
+
+        nav>ul>li:hover a {
+            transform: scale(2.2);
+            box-shadow: inset 100px 0 0 0 #2A0000;
+            color: white;
+        }
+
+        /* styles for searchbar  */
+        .search-bar {
+            background-color: #FFFFFF;
+            border-radius: 3rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        /* styles for searchbar input  */
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            color: #30261C;
+            display: none;
+        }
+
+        /* styles for searchbar button  */
+        .search-bar button {
+            background-color: #FFFFFF;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            color: #30261C;
+        }
+
+        .search-bar button:hover {
+            color: white;
+            background-color: #2A0000;
+            transform: scale(1.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+
+        /* styles for hero content   */
+
+        .hero-content {
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            min-width: 35%;
+            width: 35%;
+            text-align: left;
+            color: white;
+            z-index: 0;
+        }
+
+        .hero-content h3 {
+            font-size: 20px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .hero-content h2 {
+            font-size: 50px;
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            font-size: 17px;
+            min-width: 80%;
+            width: 80%;
+            font-weight: 200;
+        }
+
+        /* styles for hero content buttons  */
+        .hero-content-btns {
+            gap: 3.5rem;
+        }
+
+        .hero-content-btns button {
+            background-color: #FFFFFF;
+            color: #30261C;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+            box-sizing: border-box;
+            border: #FFFFFF 1px solid;
+        }
+
+        .hero-content-btns button>i {
+            font-size: 20px;
+        }
+
+        .hero-content-btns button:hover {
+            background-color: transparent;
+            border: #FFFFFF 1px solid;
+            color: #FFFFFF;
+        }
+
+        /* menu section styles  */
+        .menu {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 220px;
+            background-color: #E2D9C8;
+        }
+
+        .menu-items {
+            flex-grow: 0;
+            min-width: 60%;
+            width: 60%;
+            margin: auto;
+            justify-content: space-between;
+        }
+
+        .menu-items span {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu-items span>img {
+            width: 70px;
+        }
+
+        .menu-items span:hover h4 {
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-items span:hover img {
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+            filter: contrast(80);
+        }
+
+        .menu-items h4 {
+            color: #544A3E;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: "Poppins", sans-serif;
+
+        }
+
+
+        /* styles for special coffee section */
+        .menu-cards {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .menu-cards section {
+            width: 100%;
+            padding: 2rem 0;
+        }
+
+        .menu-cards section h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #30261C;
+            font-weight: 600;
+            font-family: playfair-display, serif;
+            margin-bottom: 2.5rem;
+        }
+
+        .cards-section {
+            padding: 1rem;
+
+        }
+
+        .cards-section>button {
+            background-color: #E2D9C8;
+            padding: 1rem;
+            border: none;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+            font-size: 20PX;
+        }
+
+        .cards-section button:hover {
+            background-color: #2A0000;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* styles for card container  */
+        .cards {
+            width: 80%;
+            margin: auto;
+            gap: 1rem;
+
+        }
+
+        /* styles for individual card   */
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 1rem;
+            flex: 1 1 210px;
+            background-color: #E2D9C8;
+            padding: 16px;
+            border-radius: 0.5rem;
+            height: 400px;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .card h4 {
+            font-family: outfit, sans-serif;
+            font-size: 20px;
+        }
+
+        .card p {
+            font-size: 16px;
+            font-family: outfit, sans-serif;
+
+        }
+
+        /* style for card image  */
+        .card-image {
+            position: relative;
+            min-width: 100%;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        /* styles for heart icon on image  */
+        .card-image>span {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 25px;
+            color: #ffffffbb;
+        }
+
+        .card-image>span i:hover {
+            color: #30261C;
+            transform: scale(1.2);
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .card-image img {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+
+        .card span {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card span p {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        #orderBtn {
+            background-color: #2A0000;
+            color: #FFFFFF;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease-in-out;
+            border: none;
+        }
+
+        /* styles for contact section */
+
+        .contact-section {
+            min-width: 100%;
+            width: 100%;
+            min-height: 300px;
+            background-color: #E2D9C8;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .contact-section div {
+            padding: 0.5rem 0;
+            width: 15%;
+            overflow: hidden;
+        }
+
+        .contact-section div img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .contact-form {
+            width: 70%;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding-top: 2rem;
+        }
+
+        .contact-form div:first-of-type {
+            gap: 2rem;
+        }
+
+        .contact-form div:nth-of-type(2) {
+            gap: 1rem;
+        }
+
+        .contact-form div {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .contact-form button {
+            background-color: #30261C;
+            color: #FFFFFF;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 1.5rem;
+        }
+
+        .contact-form button:hover {
+            background-color: #531607;
+            transform: scale(1.1);
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .input {
+            background-color: #FFFFFF;
+            border-radius: 2rem;
+            padding: 0.3rem 1rem;
+            gap: 0.5rem;
+        }
+
+        .input i {
+            font-size: 20px;
+            color: #531607;
+        }
+
+        .input>input {
+            outline: none;
+            border: none;
+            padding: 0.3rem 1rem
+        }
+
+        .input>input::placeholder {
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            color: #30261C;
+        }
+
+        #socialicons {
+            width: 30%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #socialicons i {
+            font-size: 30px;
+            color: #F1F0EE;
+            transition: all 0.3s ease-in-out;
+            padding: 0.1rem;
+            border-radius: 0.4rem;
+            background-color: #531607;
+        }
+
+        #socialicons i:hover {
+            background-color: #30261C;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        /* styles for footer section  */
+        footer {
+            width: 100%;
+            height: 250px;
+            background-color: #30261C;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .footer-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            color: #FFFFFF;
+            padding-top: 1rem;
+        }
+
+        .footer-links div {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            height: auto;
+        }
+
+        .footer-content div {
+            padding: 0 1rem;
+        }
+
+        .footer-content div h4 {
+            font-family: "playfair-display", serif;
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        .footer-content div p {
+            font-family: "poppins", sans-serif;
+            font-family: 18px;
+            transition: all 0.3s ease-in-out;
+
+        }
+
+        .footer-content div>p:hover {
+            transform: scale(1.1);
+
+        }
+
+        .footer-content div>p>a:hover {
+            text-decoration: underline;
+            color: #18130e !important;
+        }
+
+        .footer-logo-container {
+            align-self: flex-start;
+            width: 21%;
+        }
+
+
+        .footer-logo>img {
+            width: 60px;
+            object-fit: cover;
+        }
+
+        .footer-logo>span {
+            font-size: 25px;
+            white-space: nowrap;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-top: 1rem;
+        }
+
+        .footer-links {
+            width: 60%;
+            display: flex;
+        }
+
+        .social-icons {
+            width: 20%;
+            text-align: center;
+            justify-self: end;
+        }
+
+        .social-icons i {
+            font-size: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+        }
+
+        .social-icons i:hover {
+            color: #18130e;
+        }
+
+        .copyright {
+            padding: 0 6rem;
+            color: #FFFFFF;
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        /* media queries for responsivness  */
+
+        @media (min-width:1200px) and (min-width:2560px) {
+
+
+            /* styling for navbar  */
+
+
+
+            nav {
+                padding: 1.2rem 2.5rem;
+            }
+
+            /* styles for navbar logo  */
+            nav .logo {
+                font-size: 52px;
+            }
+
+
+            nav>span>img {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 1rem;
+            }
+
+            /* styles for nav menu  */
+
+            nav>ul>li>a {
+                box-shadow: inset 0 0 0 0 #2A0000;
+                color: #2A0000;
+                margin: 0 -.25rem;
+                transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+                font-size: 25px;
+                color: #FFFFFF;
+                padding: 0.5rem 1rem;
+                transition: all 0.3s ease-in-out;
+                z-index: 10;
+            }
+
+
+
+
+
+
+            /* styles for searchbar button  */
+            .search-bar button {
+                background-color: #FFFFFF;
+                border: none;
+                padding: 0.9rem;
+                border-radius: 50%;
+                font-size: 2rem;
+                color: #30261C;
+            }
+
+            .search-bar button:hover {
+                color: white;
+                background-color: #2A0000;
+                transform: scale(1.1);
+                transition: all 0.3s ease-in-out;
+            }
+
+
+            /* styles for hero content   */
+
+            .hero-content {
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                min-width: 35%;
+                width: 35%;
+                text-align: left;
+                color: white;
+                z-index: 0;
+            }
+
+            .hero-content h3 {
+                font-size: 30px;
+                font-weight: 300;
+                text-transform: uppercase;
+            }
+
+            .hero-content h2 {
+                font-size: 70px;
+                font-weight: 500;
+            }
+
+            .hero-content p {
+                font-size: 20px;
+                min-width: 80%;
+                width: 80%;
+                font-weight: 200;
+            }
+
+            /* styles for hero content buttons  */
+            .hero-content-btns {
+                gap: 3.5rem;
+            }
+
+            .hero-content-btns button {
+                background-color: #FFFFFF;
+                color: #30261C;
+                padding: 0.7rem 1.5rem;
+                border: none;
+                border-radius: 2rem;
+                font-size: 18px;
+                transition: all 0.3s ease-in-out;
+                box-sizing: border-box;
+                border: #FFFFFF 1px solid;
+            }
+
+            .hero-content-btns button>i {
+                font-size: 25px;
+            }
+
+
+            /* menu section styles  */
+            .menu {
+                min-width: 100%;
+                display: flex;
+                justify-content: center;
+                height: 220px;
+                background-color: #E2D9C8;
+            }
+
+
+            .menu-items span>img {
+                width: 90px;
+            }
+
+            .menu-items span>h4 {
+                font-size: 25px;
+            }
+
+            .menu-items span:hover h4 {
+                transform: scale(1.1);
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+            .menu-items span:hover img {
+                transform: scale(1.1);
+                transition: all 0.3s ease;
+                filter: contrast(80);
+            }
+
+
+
+            /* styles for special coffee section */
+            .menu-cards {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+
+            .menu-cards section {
+                width: 100%;
+                padding: 2rem 0;
+            }
+
+            .menu-cards section h2 {
+                font-size: 45px;
+
+            }
+
+
+            .cards-section>button {
+                padding: 1.5rem;
+                font-size: 28PX;
+            }
+
+            .cards-section button:hover {
+                background-color: #2A0000;
+                color: white;
+                transform: scale(1.1);
+            }
+
+            /* styles for card container  */
+
+
+            /* styles for individual card   */
+            .card {
+
+                height: 500px;
+            }
+
+            .card h4 {
+                font-family: outfit, sans-serif;
+                font-size: 25px;
+            }
+
+            .card p {
+                font-size: 20px;
+                font-family: outfit, sans-serif;
+
+            }
+
+            /* style for card image  */
+            .card-image {
+                position: relative;
+                min-width: 100%;
+                height: 300px;
+                overflow: hidden;
+                border-radius: 1rem;
+            }
+
+            /* styles for heart icon on image  */
+            .card-image>span {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-size: 30px;
+                color: #ffffffbb;
+            }
+
+            .card-image>span i:hover {
+                color: #30261C;
+                transform: scale(1.2);
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+            }
+
+            .card-image img {
+                min-width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+            }
+
+            .card span {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .card span p {
+                font-size: 20px;
+                font-weight: 800;
+            }
+
+            #orderBtn {
+                background-color: #2A0000;
+                color: #FFFFFF;
+                border-radius: 0.5rem;
+                padding: 0.5rem 1.5rem;
+                transition: all 0.3s ease-in-out;
+                border: none;
+                font-size: 20px;
+            }
+
+            /* styles for contact section */
+            .contact-section div {
+                padding: 0;
+                width: 15%;
+                overflow: hidden;
+            }
+
+            .contact-section div:last-of-type {
+                text-align: right;
+            }
+
+            .contact-section div img {
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .contact-form {
+                width: 90%;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-top: 2rem;
+            }
+
+            .contact-form>h2 {
+                font-size: 40px;
+            }
+
+            .contact-form p {
+                font-size: 20px;
+            }
+
+            .contact-form div:first-of-type {
+                gap: 2rem;
+            }
+
+            .contact-form div:nth-of-type(2) {
+                gap: 1rem;
+            }
+
+            .contact-form div {
+                display: flex;
+                justify-content: space-evenly;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .contact-form button {
+                background-color: #30261C;
+                color: #FFFFFF;
+                border: none;
+                padding: 1.2rem 4rem;
+                border-radius: 2rem;
+                font-size: 20px;
+            }
+
+            .contact-form button:hover {
+                background-color: #531607;
+                transform: scale(1.1);
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+            }
+
+            .input {
+                background-color: #FFFFFF;
+                border-radius: 2rem;
+                padding: 1rem 4rem;
+                gap: 0.5rem;
+            }
+
+            .input i {
+                font-size: 30px;
+                color: #531607;
+            }
+
+            .input>input {
+                outline: none;
+                border: none;
+                padding: 0.5rem 2rem
+            }
+
+            .input>input::placeholder {
+                font-family: "Poppins", sans-serif;
+                font-size: 25px;
+                color: #30261C;
+            }
+
+            #socialicons {
+                width: 30%;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            #socialicons i {
+                font-size: 40px;
+                color: #F1F0EE;
+                transition: all 0.3s ease-in-out;
+                padding: 0.1rem;
+                border-radius: 0.4rem;
+                background-color: #531607;
+            }
+
+            #socialicons i:hover {
+                background-color: #30261C;
+                transform: scale(1.2);
+                cursor: pointer;
+            }
+
+            /* styles for footer section  */
+
+
+            .footer-links div {
+                width: 25%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                height: auto;
+            }
+
+            .footer-content div {
+                padding: 0 1rem;
+            }
+
+            .footer-content div h4 {
+                font-family: "playfair-display", serif;
+                font-weight: 500;
+                font-size: 30px;
+            }
+
+            .footer-content div p {
+                font-family: "poppins", sans-serif;
+                font-family: 20px;
+                transition: all 0.3s ease-in-out;
+
+            }
+
+            .footer-content div>p:hover {
+                transform: scale(1.1);
+
+            }
+
+            .footer-content div>p>a:hover {
+                text-decoration: underline;
+                color: #18130e !important;
+            }
+
+
+
+            .footer-logo>img {
+                width: 80px;
+                object-fit: cover;
+            }
+
+            .footer-logo>span {
+                font-size: 35px;
+                white-space: nowrap;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                margin-top: 1.2rem;
+            }
+
+            .footer-links {
+                width: 60%;
+                display: flex;
+            }
+
+            .social-icons {
+                width: 20%;
+                text-align: center;
+                justify-self: end;
+            }
+
+            .social-icons i {
+                font-size: 40px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+            }
+
+            .social-icons i:hover {
+                color: #18130e;
+            }
+
+            .copyright {
+                padding: 0 9rem;
+                color: #FFFFFF;
+                font-size: 25px;
+                font-weight: 700;
+            }
+        }
+
+        @media (min-width:700px) and (max-width:1200px) {
+            nav {
+                padding: 2rem 0.5rem;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav .logo {
+                font-size: 40px;
+                white-space: nowrap;
+            }
+
+            /* styles for logo  */
+            nav>span>h1 {
+                font-weight: 500;
+            }
+
+            nav>span>img {
+                width: 40px;
+            }
+
+            nav>ul {
+                font-size: 15px;
+            }
+
+            .search-bar {
+                height: 2.5rem;
+
+            }
+
+            .search-bar input {
+                display: block;
+            }
+
+            .menu-items {
+                width: 80%;
+            }
+
+            .menu-cards .cards-section {
+                overflow-x: scroll;
+            }
+
+            .menu-cards .cards-section::-webkit-scrollbar-track {
+                display: none;
+            }
+
+            .menu-cards .cards-section::-webkit-scrollbar-thumb {
+                display: none;
+            }
+
+            .hero-content {
+                width: 80%;
+            }
+
+            .hero-content h2 {
+                font-size: 38px;
+            }
+
+            .contact-section {
+                width: 100%;
+                height: auto;
+            }
+
+            .contact-section div {
+                height: auto;
+                width: 25%;
+                overflow: hidden;
+            }
+
+            .contact-section div img {
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .contact-form {
+                width: 50%;
+
+            }
+
+            .contact-form p {
+                text-align: center;
+            }
+
+            .contact-form div {
+
+                width: 85%;
+                flex-direction: column;
+                height: auto;
+            }
+
+            .contact-form button {
+
+                padding: 0.5rem 1rem;
+            }
+
+            .input {
+
+                padding: 0.1rem 0.5rem;
+            }
+
+            .input i {
+                font-size: 16px;
+            }
+
+            .input>input {
+
+                padding: 0.2rem 0.5rem
+            }
+
+            #socialicons {
+                width: 100%;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            #socialicons i {
+                font-size: 20px;
+                color: #F1F0EE;
+
+            }
+
+            footer {
+                height: auto;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .footer-links {
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .footer-links div {
+                width: 30%;
+
+                gap: 0.5rem;
+                height: auto;
+            }
+
+            .footer-content div h4 {
+
+                font-size: 18px;
+            }
+
+            .footer-content div p {
+
+                font-size: 14px;
+            }
+
+            .social-icons {
+                width: 100%;
+                margin-top: 1rem;
+                text-align: center;
+                justify-self: center;
+            }
+
+        }
+
+        @media (width>500px) and (width<700px) {
+
+            .menu-cards .cards-section {
+                overflow-x: scroll;
+            }
+
+            .menu-cards .cards-section::-webkit-scrollbar-track {
+                display: none;
+            }
+
+            .menu-cards .cards-section::-webkit-scrollbar-thumb {
+                display: none;
+            }
+
+            .cards-section>button {
+                display: none;
+            }
+
+            footer {
+                width: 100%;
+                height: auto;
+            }
+
+            .menu-items {
+                flex-wrap: nowrap !important;
+                width: 80%;
+            }
+
+            .menu-items img {
+                width: 40px;
+
+            }
+
+            nav>ul {
+                gap: 0.5rem !important;
+                font-size: 15px;
+            }
+
+            .contact-section {
+                padding-bottom: 1rem;
+            }
+
+            .contact-section>div {
+                display: none;
+            }
+
+            .contact-section div img {
+                display: none;
+            }
+
+            .contact-form {
+                width: 100%;
+
+            }
+
+            .contact-form p {
+                text-align: center;
+            }
+
+            .contact-form>div {
+
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+            }
+
+            .contact-form>div>span {
+                width: 60%;
+                justify-content: space-between;
+            }
+
+            .contact-form button {
+
+                padding: 0.8rem 1.8rem;
+            }
+
+            .input {
+
+                padding: 0.1rem 1rem;
+            }
+
+            .input i {
+                font-size: 16px;
+            }
+
+            .input>input {
+
+                padding: 0.5rem 1rem
+            }
+
+            #socialicons {
+                width: 100%;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            #socialicons i {
+                font-size: 20px;
+                color: #F1F0EE;
+
+            }
+
+            footer {
+                gap: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .footer-links {
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .footer-links div {
+                width: 30%;
+
+                gap: 0.5rem;
+                height: auto;
+            }
+
+            .footer-content div h4 {
+
+                font-size: 18px;
+            }
+
+            .footer-content div p {
+
+                font-size: 14px;
+            }
+
+            .social-icons {
+                width: 100%;
+                margin-top: 1rem;
+                text-align: center;
+                justify-self: center;
+            }
+        }
+
+        @media screen and (max-width:700px) {
+            .menu-cards .cards-section {
+                overflow-x: scroll;
+            }
+
+            .menu-cards .cards-section::-webkit-scrollbar-track {
+                display: none;
+            }
+
+            .menu-cards .cards-section::-webkit-scrollbar-thumb {
+                display: none;
+            }
+
+            nav {
+                flex-direction: column;
+                justify-content: start;
+            }
+
+            .hero-content {
+                width: 80%;
+            }
+
+            .hero-content h2 {
+                font-size: 36px;
+            }
+
+            .menu-items img {
+                width: 40px;
+                flex-wrap: nowrap !important;
+                width: 100%;
+            }
+        }
+
+        /* For screens up to 450px width */
+        @media screen and (max-width: 450px) {
+
+            /* General layout */
+            body {
+                overflow-x: hidden;
+            }
+
+            header,
+            footer {
+                width: 100%;
+                height: auto;
+            }
+
+            /* Navbar */
+            nav {
+                padding: 0.8rem 1rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            nav>span>img {
+                width: 40px;
+            }
+
+            nav .logo {
+                font-size: 28px;
+            }
+
+            nav>ul {
+                display: none !important;
+                /* Hide nav menu */
+            }
+
+            .search-bar input {
+                display: block;
+            }
+
+            /* Hero content */
+            .hero-content {
+                width: 90%;
+                text-align: center;
+                align-items: center;
+            }
+
+            .hero-content h2 {
+                font-size: 32px;
+            }
+
+            .hero-content p {
+                font-size: 15px;
+            }
+
+            .hero-content-btns {
+                width: 80%;
+                gap: 0.5rem;
+                justify-content: space-between;
+            }
+
+            .hero-content-btns button {
+                background-color: #FFFFFF;
+                color: #30261C;
+                padding: 0.3rem 1rem;
+
+                font-size: 14px;
+
+            }
+
+            .hero-content-btns button i {
+                font-size: 14px;
+            }
+
+            /* Menu Section */
+            .menu {
+                height: auto;
+                flex-direction: column;
+                padding: 1rem 0;
+                width: 100%;
+            }
+
+            .menu-items {
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: space-evenly;
+                gap: 1.5rem;
+            }
+
+            .menu-items>span {
+                width: 30%;
+                height: auto;
+                white-space: nowrap;
+            }
+
+            .menu-items>span>img {
+                width: 30px;
+            }
+
+            /* Cards Section */
+            .menu-cards {
+                width: 100%;
+                padding: 1rem 0;
+            }
+
+            .cards-section button {
+                display: none;
+            }
+
+            .menu-cards .cards-section {
+                overflow-x: scroll;
+            }
+
+            .menu-cards .cards-section::-webkit-scrollbar-track {
+                display: none;
+            }
+
+            .menu-cards .cards-section::-webkit-scrollbar-thumb {
+                display: none;
+            }
+
+            .contact-section {
+                height: auto;
+                padding-bottom: 1rem;
+                align-items: center;
+            }
+
+            .contact-section>div {
+                display: none;
+
+            }
+
+            .contact-form {
+                padding-top: 1rem;
+                width: 90%;
+                margin: 0 auto;
+                text-align: center;
+                height: auto;
+            }
+
+            .contact-form>div {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 0;
+            }
+
+            .contact-form>div {
+                gap: 1rem !important;
+            }
+
+            .contact-form>div>span {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .contact-form div span:first-of-type {
+                flex-direction: row-reverse;
+            }
+
+            .contact-form div span:first-of-type button {
+                padding: 0.5rem 1.6rem;
+            }
+
+            .contact-form button {
+                padding: 0.5rem 1rem;
+            }
+
+            .input {
+                width: 60%;
+                padding: 0.5rem 0.4rem;
+            }
+
+            .input>input {
+                padding: 0.2rem 0.3rem;
+                width: 100%;
+            }
+
+            .input i {
+                font-size: 16px;
+            }
+
+            #socialicons {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            #socialicons i {
+                font-size: 20px;
+            }
+
+            /* Footer */
+            footer {
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-logo-container {
+                justify-content: center;
+                width: 100%;
+
+            }
+
+            .footer-logo {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .footer-links div {
+                width: 40%;
+            }
+
+            .footer-content div {
+                padding: 0;
+
+            }
+
+            .footer-content div h4 {
+                font-size: 18px;
+            }
+
+            .footer-content div p {
+                font-size: 14px;
+            }
+
+            .social-icons {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .social-icons i {
+                font-size: 28px;
+            }
+
+            .copyright {
+                width: 100%;
+                padding: 0;
+                font-size: 12px;
+            }
+        }
+    </style>
+
+    <!-- style closing tag  -->
+
+</head>
+
+
+
+
+<!-- body start  -->
+
+<body>
+
+    <!-- hero  section start -->
+
+
+
+    <header class="hero-section">
+
+        <!--navbar  -->
+        <nav class=" flex ">
+            <!-- logo -->
+            <span class="flex gap-1">
+
+                <img src="/images/logo.png" alt="Café bloom logo">
+                <h1 class="logo playfair-display"><a href="">Café bloom</a></h1>
+            </span>
+
+
+            <!--  nav menu start-->
+            <ul class="flex gap-1 poppins">
+
+                <li>
+                    <a href="#">HOME</a>
+                </li>
+                <li>
+                    <a href="#">
+                        ABOUT
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        MENU
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        CONTACT
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        LOGIN
+                    </a>
+                </li>
+            </ul>
+            <!--  nav menu end  -->
+
+            <!-- search button  -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button>
+                    <i class="ri-search-line"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- hero content  start -->
+
+        <div class="hero-content">
+            <h3 class="outfit">welcome</h3>
+            <h2 class="playfair-display">We serve the richest coffee in the city!</h2>
+            <p class="outfit">Where exceptional coffee meets unforgettable moments. We don't just serve coffee - we
+                craft
+                experiences that awaken your senses and warm your soul.</p>
+
+            <!-- hero content buttons  -->
+            <div class="hero-content-btns flex">
+                <button>Order Now</button>
+                <button><i class="ri-external-link-line"></i> Visit Us</button>
+            </div>
+        </div>
+
+        <!-- hero content end  -->
+
+    </header>
+
+
+    <!-- hero section end  -->
+
+    <!-- ====================================================================================== -->
+
+    <!-- main content start  -->
+
+    <main>
+        <!-- menu section  start-->
+        <section class="menu">
+            <!-- menu items container  -->
+            <div class="menu-items flex gap-2 wrap">
+
+                <!-- individual menu item -->
+                <span>
+                    <img src="/images/hotcoffee.png" alt="cup of hot coffee">
+                    <h4>Hot Coffee</h4>
+                </span>
+                <!-- individual menu item -->
+
+                <span>
+                    <img src="/images/coldcoffee.png" alt="glass of cold coffee">
+                    <h4>Cold Coffee</h4>
+                </span>
+                <!-- individual menu item -->
+
+                <span>
+                    <img src="/images/cupcoffee.png" alt="coffee cup icon">
+                    <h4>Cup Coffee</h4>
+                </span>
+                <!-- individual menu item -->
+
+                <span>
+                    <img src="/images/dessert.png" alt="Dessert plate with pastries">
+                    <h4>Dessert</h4>
+                </span>
+
+            </div>
+        </section>
+        <!-- menu section end  -->
+
+
+        <!-- card menu section  start  -->
+
+        <section class="menu-cards ">
+            <!-- special coffee section  -->
+            <section class="special-coffee">
+                <!-- section heading  -->
+                <h2 class="playfair-display">Our Special Coffee</h2>
+
+                <!-- cards container wrapper -->
+                <div class="cards-section flex wrap ">
+
+                    <!-- navigation button  -->
+                    <button><i class="ri-arrow-left-line"></i></button>
+
+                    <!-- cards container  -->
+
+                    <div class="cards flex ">
+                        <!-- card 1 -->
+                        <div class="card">
+                            <div class="card-image">
+                                <span><i class="ri-heart-line"></i></span>
+                                <img src="/images/img1.png" alt="Hot Coffee Menu cup">
+                            </div>
+
+                            <h4>Hot Coffee Menu</h4>
+                            <p>Our signature medium-roast blend with notes of chocolate and caramel</p>
+                            <span class="card-btn">
+                                <p>Rs. 600</p> <button id="orderBtn">Order Now</button>
+                            </span>
+                        </div>
+
+                        <!-- card 2 -->
+                        <div class="card">
+                            <div class="card-image">
+                                <span><i class="ri-heart-line"></i></span>
+
+                                <img src="/images/img2.png" alt="Americano coffee cup">
+                            </div>
+
+                            <h4>Americano</h4>
+                            <p>Rich espresso shots diluted with hot water</p>
+                            <span class="card-btn">
+                                <p>Rs. 450</p> <button id="orderBtn">Order Now</button>
+                            </span>
+                        </div>
+
+                        <!-- card 3 -->
+
+                        <div class="card">
+                            <div class="card-image">
+                                <span><i class="ri-heart-line"></i></span>
+                                <img src="/images/img3.png" alt="Caramel Macchiato cup">
+                            </div>
+
+                            <h4>Caramel Macchiato</h4>
+                            <p>Espresso combined with vanilla syrup, steamed milk</p>
+                            <span class="card-btn">
+                                <p>Rs. 700</p> <button id="orderBtn">Order Now</button>
+                            </span>
+                        </div>
+
+                        <!-- card 4  -->
+
+                        <div class="card">
+                            <div class="card-image">
+                                <span><i class="ri-heart-line"></i></span>
+                                <img src="/images/img4.png" alt="Hazelnut Latte mug">
+                            </div>
+
+                            <h4>Hazelnut Latte</h4>
+                            <p>Creamy latte infused with premium hazelnut syrup</p>
+                            <span class="card-btn">
+                                <p>Rs. 700</p> <button id="orderBtn">Order Now</button>
+                            </span>
+                        </div>
+
+                    </div>
+                    <button><i class="ri-arrow-right-line"></i></button>
+                </div>
+            </section>
+
+
+            <!-- special drinks secction  -->
+            <section class="special-drinks ">
+
+                <!-- section heading  -->
+                <h2 class="playfair-display">Our Special Drinks</h2>
+
+                <!-- cards container wrapper  -->
+                <div class="cards-section flex">
+
+                    <!-- navigation button  -->
+                    <button><i class="ri-arrow-left-line"></i></button>
+
+                    <!-- cards container  -->
+                    <div class="cards flex ">
+                        <!-- card 5 -->
+                        <div class="card">
+                            <div class="card-image">
+                                <span><i class="ri-heart-line"></i></span>
+
+                                <img src="/images/img5.png" alt="Bloom Signature coffee">
+                            </div>
+
+                            <h4>Bloom Signature</h4>
+                            <p>Our house special - espresso, white chocolate, hazelnut, and a hint of cinnamon</p>
+                            <span class="card-btn">
+                                <p>Rs. 900</p> <button id="orderBtn">Order Now</button>
+                            </span>
+                        </div>
+
+                        <!-- card 6-->
+                        <div class="card">
+                            <div class="card-image">
+                                <span><i class="ri-heart-line"></i></span>
+
+                                <img src="/images/img6.png" alt="Mocha Fusion drink">
+                            </div>
+
+                            <h4>Mocha Fusion</h4>
+                            <p>Rich chocolate and espresso blend topped with whipped cream.</p>
+                            <span class="card-btn">
+                                <p>Rs. 750</p> <button id="orderBtn">Order Now</button>
+                            </span>
+                        </div>
+
+                        <!-- card 7 -->
+
+                        <div class="card">
+                            <div class="card-image">
+                                <span><i class="ri-heart-line"></i></span>
+                                <img src="/images/img7.png" alt="Caramel Frappé drink">
+                            </div>
+
+                            <h4>Caramel Frappé</h4>
+                            <p>Blended ice coffee with caramel syrup, topped with whipped cream</p>
+                            <span class="card-btn">
+                                <p>Rs. 850</p> <button id="orderBtn">Order Now</button>
+                            </span>
+                        </div>
+
+                        <!-- card 8  -->
+
+                        <div class="card">
+                            <div class="card-image">
+                                <span><i class="ri-heart-line"></i></span>
+                                <img src="/images/img8.png" alt="Turkish Coffee cup">
+                            </div>
+
+                            <h4>Turkish Coffee</h4>
+                            <p>Finely ground coffee boiled with cardamom </p>
+                            <span class="card-btn">
+                                <p>Rs. 600</p> <button id="orderBtn">Order Now</button>
+                            </span>
+                        </div>
+
+                    </div>
+                    <button><i class="ri-arrow-right-line"></i></button>
+                </div>
+            </section>
+        </section>
+
+        <!-- card menu section end  -->
+
+        <!-- ========================================================================================== -->
+        <!-- contact section start  -->
+
+        <section class="contact-section">
+            <div><img src="/images/left.png" alt="Decorative coffee beans on the left"></div>
+
+
+            <form action="" class="contact-form flex">
+                <h2 class="poppins">Contact Us</h3>
+                    <p class="poppins">Drop us a message and we'll get back to you soon.</p>
+
+                    <div class="form-goup flex ">
+                        <span class="flex gap-1"><button>Name</button><span class="flex input"><i
+                                    class="ri-user-fill"></i><input type="text"
+                                    placeholder="Enter Your Name"></span></span>
+                        <span class="flex gap-1"><span class="flex input"><i class="ri-mail-line"></i><input
+                                    type="email" placeholder="Email Address"></span><button>Subscribe</button></span>
+                    </div>
+
+                    <div class="form-goup flex">
+                        <span class="flex gap-1"><button>Phone</button><span class="flex input"><i
+                                    class="ri-phone-fill"></i><input type="tel"
+                                    placeholder="Phone Number"></span></span>
+                        <span class="flex gap-1"><span class="flex input"><i class="ri-message-2-fill"></i></i><input
+                                    type="text" placeholder="Send Message"></span><button>Message</button></span>
+                    </div>
+                    <div id="socialicons">
+                        <i class="ri-tiktok-fill"></i>
+                        <i class="ri-facebook-line"></i>
+                        <i class="ri-instagram-line"></i>
+                    </div>
+            </form>
+            <div><img src="/images/right.png" alt="Decorative coffee beans on the right"></div>
+        </section>
+
+        <!-- content section end  -->
+
+
+    </main>
+    <!-- main section end  -->
+
+    <!-- ============================================================================== -->
+    <!-- footer  section start  -->
+    <footer>
+        <!-- footer content  -->
+        <div class="footer-content flex">
+            <!-- footer logo container  -->
+            <div class="footer-logo-container ">
+                <div class="footer-logo flex"><img src="/images/logo.png" alt=""><span class="poppins ">Café
+                        bloom</span></div>
+            </div>
+            <!-- footer links  -->
+            <div class="footer-links flex">
+                <div>
+                    <h4>PRIVACY</h4>
+                    <p><a href="">Terms of use</a></p>
+                    <p><a href="">Privacy policy</a></p>
+                    <p><a href="">Cookies</a></p>
+                </div>
+                <div>
+                    <h4>SERVICES</h4>
+                    <p><a href="">Shop</a></p>
+                    <p><a href="">Order ahead</a></p>
+                    <p><a href="">Menu</a></p>
+                </div>
+                <div>
+                    <h4>ABOUT US</h4>
+                    <p><a href="">Find a location</a></p>
+                    <p><a href="">About us</a></p>
+                    <p><a href="">Out story</a></p>
+                </div>
+                <div>
+                    <h4>INFORMATION</h4>
+                    <p><a href="">Plons & pricing</a></p>
+                    <p><a href="">Sell your prodcts</a></p>
+                    <p><a href="">Jobs</a></p>
+                </div>
+            </div>
+
+            <!-- footer social icons  -->
+            <div class="social-icons">
+                <h4 class="playfair-display">SOCIAL MEDIA</h4>
+                <span>
+                    <i class="ri-youtube-line"></i>
+                    <i class="ri-facebook-circle-fill"></i>
+                    <i class="ri-twitter-line"></i>
+                    <i class="ri-twitter-x-line"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- copyright  -->
+        <span class="copyright playfair-display">
+            <p>© 2024 Café Bloom. All rights reserved.</p>
+        </span>
+    </footer>
+
+    <!-- footer section end  -->
+</body>
+
+</html>
